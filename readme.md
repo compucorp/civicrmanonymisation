@@ -30,10 +30,10 @@ WHERE e1.uid != 0 AND
  
 -- delete BAM source, profile, destination and schedules 
 
-DELETE FROM  backup_migrate_destinations;
-DELETE FROM  backup_migrate_profiles;
-DELETE FROM  backup_migrate_schedules;
-DELETE FROM  backup_migrate_sources;
+DELETE FROM  backup_migrate_destinations;  
+DELETE FROM  backup_migrate_profiles;  
+DELETE FROM  backup_migrate_schedules;  
+DELETE FROM  backup_migrate_sources;  
 
 -- Disable BAM
 UPDATE system SET status='0' WHERE name='backup_migrate';
