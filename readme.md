@@ -1,4 +1,6 @@
-Execute with CiviCRM Database
+--Execute with CiviCRM Database
+
+
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.sort_name = CONCAT( 'Anonymous', ', ', c2.id ) WHERE civicrm_contact.id = c2.id;
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.display_name = CONCAT( c2.id, ' ', 'Anonymous' ) WHERE civicrm_contact.id = c2.id;
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.last_name = 'Anonymous' WHERE civicrm_contact.id = c2.id;
@@ -12,7 +14,9 @@ UPDATE civicrm_email INNER JOIN civicrm_email AS e2 ON civicrm_email.id = e2.id 
 UPDATE civicrm_phone SET phone = md5(phone);
 UPDATE civicrm_note SET note = md5(note), subject = md5(subject);
 UPDATE `civicrm_payment_processor` cpp SET cpp.`user_name` = 'anonymised', cpp.`password` = 'anonymised', cpp.`signature` = 'anonymised' WHERE cpp.`user_name` NOT LIKE '%dummy%';
+
 Execute with Drupal Database
+
 UPDATE users
 INNER JOIN users AS e2 ON users.uid = e2.uid
 SET users.mail = CONCAT( e2.uid ,'@','example.com' ), users.init = CONCAT( e2.uid ,'@','example.com' )
@@ -25,9 +29,11 @@ WHERE e1.uid != 0 AND
       e1.uid NOT IN (SELECT DISTINCT uid FROM users_roles ur LEFT JOIN role r ON ur.rid = r.rid WHERE r.name = 'administrator');
  
 -- delete BAM source, profile, destination and schedules 
+
 DELETE FROM  backup_migrate_destinations;
 DELETE FROM  backup_migrate_profiles;
 DELETE FROM  backup_migrate_schedules;
 DELETE FROM  backup_migrate_sources;
+
 -- Disable BAM
 UPDATE system SET status='0' WHERE name='backup_migrate';
