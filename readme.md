@@ -2,21 +2,13 @@
 
 
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.sort_name = CONCAT( 'Anonymous', ', ', c2.id ) WHERE civicrm_contact.id = c2.id;
-
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.display_name = CONCAT( c2.id, ' ', 'Anonymous' ) WHERE civicrm_contact.id = c2.id;
-
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.last_name = 'Anonymous' WHERE civicrm_contact.id = c2.id;
-
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.first_name = c2.id WHERE civicrm_contact.id = c2.id;
-
 UPDATE civicrm_contact SET birth_date = STR_TO_DATE('01,1,1999','%d,%m,%Y');
-
 UPDATE civicrm_address SET street_address = 'Anonymous', supplemental_address_1 = 'Anonymous', postal_code = 'Anonymous';
-
 UPDATE civicrm_address SET postal_code = null,postal_code_suffix = null,geo_code_1 = null,geo_code_2 = null;
-
 UPDATE civicrm_contact SET email_greeting_display = 'Dear Anonymous', addressee_display = 'Anonymous , Anonymous';
-
 UPDATE civicrm_contact SET postal_greeting_display = 'Dear Anonymous', addressee_display = 'Anonymous , Anonymous';
 UPDATE civicrm_email INNER JOIN civicrm_email AS e2 ON civicrm_email.id = e2.id SET civicrm_email.email = CONCAT( e2.id ,'@','example.com' ) WHERE civicrm_email.id = e2.id;
 UPDATE civicrm_phone SET phone = md5(phone);
