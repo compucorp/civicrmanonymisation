@@ -1,4 +1,4 @@
---Execute with CiviCRM Database
+##Execute with CiviCRM Database
 
 
 UPDATE civicrm_contact INNER JOIN civicrm_contact AS c2 ON civicrm_contact.id = c2.id SET civicrm_contact.sort_name = CONCAT( 'Anonymous', ', ', c2.id ) WHERE civicrm_contact.id = c2.id;
@@ -15,7 +15,7 @@ UPDATE civicrm_phone SET phone = md5(phone);
 UPDATE civicrm_note SET note = md5(note), subject = md5(subject);
 UPDATE `civicrm_payment_processor` cpp SET cpp.`user_name` = 'anonymised', cpp.`password` = 'anonymised', cpp.`signature` = 'anonymised' WHERE cpp.`user_name` NOT LIKE '%dummy%';
 
-Execute with Drupal Database
+##Execute with Drupal Database
 
 UPDATE users
 INNER JOIN users AS e2 ON users.uid = e2.uid
